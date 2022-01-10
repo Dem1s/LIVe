@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https:/thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>registration</title>
+</head>
+<body>
+<form th:action="@{/registration}"  method="post">
+    <p>Registration:</p>
+    <div>Username:
+
+        <input type="text" th:field="${user.username}" />
+    </div>
+    <div>Password:
+        <input type="password" th:field="*{user.password}">
+   </div>
+    <div>Matching Password <label>
+        <input type="password" th:field="${user.matchingPassword}">
+    </label></div>
+    <div>Email:
+        <label ><input type="email" th:field="${user.email}"></label>
+    </div>
+    <div><button type="submit">registration</button></div>
+    <div th:text="${errorUser}"></div>
+</form>
+</body>
+</html>

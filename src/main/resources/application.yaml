@@ -1,0 +1,14 @@
+spring:
+  main:
+    allow-circular-references: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/SpringShop
+    username: Art
+    password: wsx12dr
+  flyway:
+    baseline-on-migrate: true
+

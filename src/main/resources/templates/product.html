@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https:/thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+
+    <title>SpringUI</title>
+    <div th:fragment="css">
+        <!-- Font Awesome -->
+        <link
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+                rel="stylesheet"
+        />
+        <!-- Google Fonts -->
+        <link
+                href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+                rel="stylesheet"
+        />
+        <!-- MDB -->
+        <link
+                href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css"
+                rel="stylesheet"
+        />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+              crossorigin="anonymous">
+    </div>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar" th:fragment="nav-menu">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/product}"><Strong>LIVe</Strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" th:href="@{/profile}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/basket}" class="nav-link waves-effect">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="clearfix d-none d-sm-inline-block">Basket</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/info}">About Us</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/new}" class="nav-link">Users</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<main>
+
+    <div class="container">
+        <table>
+            <tr th:each=" products: ${productList}">
+                <td><section class="text-center mb-4">
+                   <div class="row wow fadeIn">
+                       <div class="col-lg-3 col-md-6 mb-4">
+                           <div class="card">
+
+                              <div class="view overlay">
+                                  <img class="card-img-top" th:src="${products.src}" alt="gucci">
+                              </div>
+                               <div class="card-body text-center">
+                                   <span th:text="${products.title}" class="grey-text"></span>
+                                   <div><span th:text="${products.price}" class="grey-text"></span>&#8381;</div>
+                                   <a th:href="@{/product/{id}/basket(id= ${products.id})}"> <button class="btn btn-lg btn-block btn-primary btn-dark">Buy</button></a>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                </section></td>
+            </tr>
+        </table>
+    </div>
+</main>
+<div th:fragment="scripts">
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+            integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+            crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

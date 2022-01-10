@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https:/thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Greeting</title>
+</head>
+<body>
+ <nav> hello,
+     <span sec:authorize = "!isAuthenticated()">unknown</span>
+     <span sec:authorize = "isAuthenticated()"> <span sec:authentication="name"></span></span>
+ </nav>
+ <a th:href="@{/login}"> login</a>
+ <a th:href="@{/registration}"> registration</a>
+<a th:href="@{/main}">main Page</a>
+ <a th:href="@{/logout}"> logout</a>
+</body>
+</html>
