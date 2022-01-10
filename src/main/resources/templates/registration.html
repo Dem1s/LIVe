@@ -21,7 +21,7 @@
         <label ><input type="email" th:field="${user.email}"></label>
     </div>
     <div><button type="submit">registration</button></div>
-    <div th:text="${errorUser}"></div>
+    <div th:text="${errorUser}" th:action="alert"></div>
 </form>
 </body>
 </html>

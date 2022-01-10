@@ -29,7 +29,7 @@ public class ProductController {
         return "product";
     }
     @GetMapping("/{id}/basket")
-    public String AddToBasket(@PathVariable Long id, Principal principal){
+    public String AddToBasket(@PathVariable("id") Long id, Principal principal){
         if(principal== null){
             return "redirect:/product";
         }

@@ -4,20 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Users</title>
+    <div th:insert="product:: css"></div>
 </head>
 <body>
-    <table border="1">
-    <tr th:each="user : ${users}">
-            <td th:text="${user.username}">a</td>
-            <td th:text="${user.email}">d</td>
-            <td th:text="${user.role}"></td>
-        </tr>
+    <table >
+    <ul th:each="user : ${users}" th:border="1">
+            <li th:text="${user.username}">a</li>
+            <li th:text="${user.email}">d</li>
+            <li th:text="${user.role}"></li>
+        </ul>
     </table>
+    <div class="container">
     <form th:action="@{/new}" method="post">
         Введите имя пользователя:
         <input type="text" name="username">
         <button type="submit">изменить роль</button>
         <span th:text="${AddAdm}">d</span>
     </form>
+    </div>
+<div th:insert="product :: scripts"></div>
 </body>
 </html>

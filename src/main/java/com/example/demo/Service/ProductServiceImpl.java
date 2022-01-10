@@ -44,6 +44,9 @@ public class ProductServiceImpl implements ProductService{
             user.setBasket(newBasket);
             userService.save(user);
         }
+        else {
+            basketService.addProduct(basket,Collections.singletonList(productId));
+        }
     }
 
 

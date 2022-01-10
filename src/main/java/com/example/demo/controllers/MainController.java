@@ -18,7 +18,7 @@ public class MainController {
 
     @GetMapping("/")
     public String greeting(){
-        return "greeting";
+        return "redirect:/product";
     }
 
 

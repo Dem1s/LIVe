@@ -30,12 +30,13 @@ public class BasketServiceImpl implements BasketService {
     Basket basket = new Basket();
     basket.setUser(user);
     List<Product> productList = getCollectRefProdById(productId);
+    basket.setProducts(productList);
         return basketRepo.save(basket);
     }
 
     private List<Product> getCollectRefProdById(List<Long> productId) {
     return productId.stream()
-            .map(productRepo::getById)
+            .map(productRepo::getOne)
             .collect(Collectors.toList());
     }
 
@@ -44,6 +45,7 @@ public class BasketServiceImpl implements BasketService {
     List<Product> products = basket.getProducts();
     List<Product> newProductList = products == null ? new ArrayList<>() : new ArrayList<>(products);
     newProductList.addAll(getCollectRefProdById(productId));
+    basket.setProducts(newProductList);
     basketRepo.save(basket);
     }
 }
